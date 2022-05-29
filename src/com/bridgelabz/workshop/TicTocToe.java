@@ -1,19 +1,19 @@
 package com.bridgelabz.workshop;
 
-
 import java.util.Scanner;
 
 public class TicTocToe {
+    private static char[] board = new char[10];
     public static char player, computer;
 
-    public static char[] createboard()
+    public void createboard()
     {
-        char[] board = new char [10];
+
         for (int i = 1; i< board.length; i++)
         {
             board[i]=' ';
         }
-        return board;
+
     }
         public void playerchoice(){
             System.out.println("Enter X or O");
@@ -31,29 +31,38 @@ public class TicTocToe {
 
             }
         }
-    public void board(){
+    public void displayBoard(char[] board){
 
-        for (int i = 0; i < 3; i++){
-            for (int j = 0 ; j < 3; j++){
+            System.out.println(+ board[1] + "|" + board[2] +"|" + board[3]);
 
-                System.out.println("---");
+            System.out.println("---");
+            System.out.println(+ board[3] + "|" + board[4] +"|" + board[5]);
+
+            System.out.println("---");
+            System.out.println(+ board[7] + "|" + board[8] + "|" + board[9]);
+
+            System.out.println("---");
+    }
+    public void move(char[] board) {
+        Scanner obj = new Scanner(System.in);
+        System.out.println("Enter Input :");
+        int i = obj.nextInt();
+        if (0 < i && i < 10) {
+            if (board[i] == ' ') {
+                board[i] = player;
+            } else {
+                System.out.println("Occupied Already");
             }
-            System.out.println("  ");
-            for (int j = 0; j < 3; j++){
-
-                System.out.println("| ");
-
-            }
-
         }
     }
-
-    public static void main(String[] args) {
+        public static void main(String[] args) {
         System.out.println( "Welocme to Tic tac Toe ");
-        createboard();
+        //createboard();
         TicTocToe obj2 = new TicTocToe();
+        obj2.createboard();
         obj2.playerchoice();
-        obj2.board();
+        obj2.displayBoard(board);
+        obj2.move(board);
 
         }
 }
